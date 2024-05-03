@@ -16,10 +16,14 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
+    "idb": "^8.0.0",
     "if-env": "^1.0.4"
   },
   "devDependencies": {
     "concurrently": "^5.2.0",
-    "nodemon": "^2.0.4"
+    "install": "^0.13.0",
+    "mini-css-extract-plugin": "^2.9.0",
+    "nodemon": "^2.0.4",
+    "npm": "^10.7.0"
   }
 }
