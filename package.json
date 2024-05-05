@@ -24,6 +24,7 @@
     "install": "^0.13.0",
     "mini-css-extract-plugin": "^2.9.0",
     "nodemon": "^2.0.4",
-    "npm": "^10.7.0"
+    "npm": "^10.7.0",
+    "webpack-pwa-manifest": "^4.3.0"
   }
 }

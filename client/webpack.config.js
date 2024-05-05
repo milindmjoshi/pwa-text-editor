@@ -23,17 +23,51 @@ module.exports = () => {
     plugins: [
       new HtmlWebpackPlugin({
         template: './index.html',
-        title: 'Webpack Plugin',
+        title: 'JATE',
+      }),
+      new WebpackPwaManifest({
+        fingerprints: false,
+        inject: true,
+        name: 'JATE text eidtor',
+        short_name: 'Jate',
+        description: 'Just another PWA JS text editor!',
+        background_color: '#225ca3',
+        theme_color: '#225ca3',
+        start_url: './',
+        publicPath: './',
+        background_color: '#ffffff',
+        crossorigin: 'use-credentials', //can be null, use-credentials or anonymous
+        icons: [
+          {
+            src: path.resolve('src/images/logo.png'),
+            sizes: [96, 128, 192, 256, 384, 512], // multiple sizes
+            destination: path.join('assets', 'icons'),
+          },
+          // {
+          //   src: path.resolve('src/assets/large-icon.png'),
+          //   size: '1024x1024' // you can also use the specifications pattern
+          // },
+          // {
+          //   src: path.resolve('src/assets/maskable-icon.png'),
+          //   size: '1024x1024',
+          //   purpose: 'maskable'
+          // }
+        ]
       }),
       new MiniCssExtractPlugin(),
-      new WorkboxPlugin.GenerateSW()
+      //new WorkboxPlugin.GenerateSW()
+      new InjectManifest({
+        swSrc: './src-sw.js',
+        swDest: 'service-worker.js',
+      }),
     ],
 
     module: {
       rules: [
         {
           test: /\.css$/i,
-          use: [MiniCssExtractPlugin.loader, 'css-loader'],
+          //use: [MiniCssExtractPlugin.loader, 'css-loader'],
+          use: ['style-loader', 'css-loader'],
         },
         {
           test: /\.(png|svg|jpg|jpeg|gif)$/i,
@@ -46,6 +80,7 @@ module.exports = () => {
             loader: 'babel-loader',
             options: {
               presets: ['@babel/preset-env'],
+              plugins: ['@babel/plugin-proposal-object-rest-spread', '@babel/transform-runtime'],
             },
           },
         },
