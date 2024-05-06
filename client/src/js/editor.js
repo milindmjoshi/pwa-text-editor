@@ -32,8 +32,8 @@ export default class {
         this.editor.setValue(localData || header);
       }
       else{
-        console.log("Set value from IndexDB: " + data);
-        this.editor.setValue(data);
+        console.log("Set value from IndexDB: " +  (data[0].jate));
+        this.editor.setValue(data[0].jate);
       }
     });
 
