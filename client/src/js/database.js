@@ -1,5 +1,6 @@
 import { openDB } from 'idb';
 
+// init db
 const initdb = async () =>
   openDB('jate', 1, {
     upgrade(db) {
@@ -14,7 +15,7 @@ const initdb = async () =>
     },
   });
 
-//export const putDb = async (content) => console.error('putDb not implemented');
+//Add method to put do database. Use same Id so all the content is stored under one key
 export const putDb = async (content) => {
   console.log('Post to the database: ' + content);
 
@@ -37,8 +38,7 @@ export const putDb = async (content) => {
   console.log('Data saved to the database', result);
 };
 
-// TODO: Add logic for a method that gets all the content from the database
-//export const getDb = async () => console.error('getDb not implemented');
+// Gets all the content from the database
 export const getDb = async () => {
   console.log('GET entry from the database');
 
